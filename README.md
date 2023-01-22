@@ -1,6 +1,6 @@
  # 鹿児島Ruby会議02
 
-- | URL
+関連項目 | URL
 ---|---
 WebサイトURL | https://k-ruby.com/kagoshima-rubykaigi02/
 connpass イベントページ | https://k-ruby.connpass.com/event/272282/
