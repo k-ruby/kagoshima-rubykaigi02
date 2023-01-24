@@ -1,0 +1,259 @@
+@charset "utf-8";
+
+/*========= レイアウトのためのCSS ===============*/
+
+h1,
+h2 {
+    font-size: 1.2rem;
+}
+
+h2,
+#container p,
+small {
+    margin: 0 0 30px 0;
+}
+
+small {
+    display: block;
+    text-align: center;
+}
+
+body {
+    background-color: #f5f2eb;
+}
+
+img {
+    width: 100%;
+}
+
+/*フォント周り*/
+p {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #3e3e3e;
+}
+
+
+/*========= 左固定レイアウトのためのCSS ===============*/
+
+/*左と右を囲う全体のエリア*/
+#wrapper {
+    position: relative;
+    /*position stickyの基点にするため relativeをかける*/
+    display: flex;
+    /*左エリア、右エリア横並び指定*/
+    flex-wrap: wrap;
+    /*ボックスの折り返し可*/
+}
+
+/*左エリア*/
+#fixed-area {
+    /*左固定記述*/
+    position: -webkit-sticky;
+    /*Safari用*/
+    position: sticky;
+    top: 0;
+    /*横半分35%　縦を100vhにする*/
+    width: 35%;
+    max-height: 100vh;
+    /*装飾のためのCSS*/
+    display: flex;
+    /*justify-content: center; */
+    /* align-items: center; */
+    padding-top: 15%;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+}
+
+
+#header {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+#header #nav li {
+    margin-top: 10%;
+    font-size: 1.5em;
+    color: #b29059;
+    font-weight: bold;
+    text-align: left;
+    line-height: 1.5;
+}
+
+#header #nav li a {
+    color: #a5a5a5;
+    text-decoration: none;
+}
+
+#header #nav li a.current {
+    color: #d3360b;
+}
+
+/*右エリア*/
+#container {
+    /*横半分50%にする*/
+    width: 60%;
+    background: #fff;
+}
+
+#content {
+    padding: 5%;
+}
+
+.main {
+    text-align: center;
+    font-size: 1.5em;
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+.main a {
+    color: #d3360b;
+    display: inline-block;
+    border: solid #d3360b;
+    padding: 0 5px;
+    font-size: .8em;
+}
+
+.main a {
+    text-decoration: none;
+}
+
+.btn--orange,
+a.btn--orange {
+    color: #fff;
+    background-color: #d3360b;
+    border: solid #d3360b 3px;
+    width: 100%;
+    height: 50px;
+    line-height: 2.5;
+}
+
+.btn--orange:hover,
+a.btn--orange:hover {
+    color: #d3360b;
+    border: solid #d3360b 3px;
+    background-color: #fff;
+}
+
+a.btn--radius {
+    border-radius: 100vh;
+}
+
+.content_style {
+    padding-top: 6%;
+    margin-bottom: 15%;
+}
+
+.content_style h2 {
+    color: #d3360b;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+
+
+.content_style ul {
+    list-style: disc;
+    padding-left: 2em;
+    margin: 0;
+    line-height: 1.8;
+}
+
+.content_style li {
+    padding-bottom: 2%;
+}
+
+
+
+/*========= バー表示のためのCSS ===============*/
+
+/*タイムライン全体の設定*/
+.timeline {
+    width: 90%;
+    margin: 50px auto;
+    padding: 0 30px;
+}
+
+.timeline li {
+    /*線の起点とするためrelativeを設定*/
+    position: relative;
+    list-style: none;
+    padding: 0 0 20px 0;
+}
+
+.timeline dl {
+    margin: 0 0 20px 3em;
+}
+
+.timeline dd strong {
+    display: block;
+    padding: 10px 0;
+}
+
+.timeline dt {
+    font-size: 1.5em;
+}
+
+/*絶対配置で線を設定*/
+.border-line {
+    /*線の位置*/
+    position: absolute;
+    left: 0.2em;
+    top: 18px;
+    width: 2px;
+    /*線の太さ*/
+    height: 0;
+    /*はじめは高さを0に*/
+    background: #ccc;
+}
+
+/*タイムラインの見出し横の丸の位置と形状*/
+.timeline li::after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background: #666;
+    border-radius: 50%;
+}
+
+
+/*========= レイアウトのためのCSS ===============*/
+
+hep,
+ul {
+    margin-top: 20px;
+}
+
+a {
+    color: #333;
+}
+
+/*＝＝＝＝＝＝＝＝＝＝＝768px以下の見え方＝＝＝＝＝＝＝＝＝＝＝＝＝*/
+
+@media screen and (max-width:768px) {
+    #wrapper {
+        display: block;
+        /*display:flex;を解除*/
+    }
+
+    section {
+        min-height: auto;
+        /*縦を100vh⇒解除*/
+    }
+
+    #fixed-area {
+        display: none;
+    }
+
+    #container {
+        width: 90%;
+        margin: auto;
+        /*横幅を100%にして1列に見せる*/
+    }
+}
