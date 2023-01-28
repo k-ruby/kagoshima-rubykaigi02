@@ -41,17 +41,6 @@
   // ページ読み込み時とスクロール時に、現在地をチェックする
   document.addEventListener("DOMContentLoaded", currentCheck); // 対象が画像ではないので load は使わない
   document.addEventListener("scroll", currentCheck);
-
-  // ナビゲーションをクリックした時のスムーズスクロール
-  navLink.click(function () {
-    $("html,body").animate(
-      {
-        scrollTop: $($(this).attr("href")).offset().top,
-      },
-      300
-    );
-    return false;
-  });
 })();
 
 //線が伸びるための設定を関数でまとめる
