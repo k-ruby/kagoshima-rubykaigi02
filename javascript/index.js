@@ -1,18 +1,18 @@
 $(function () {
   // ナビゲーションのリンクを指定
-  var navLink = $("#nav li a");
+  const navLink = $("#nav li a");
 
   // 各コンテンツのページ上部からの開始位置と終了位置を配列に格納しておく
-  var contentsArr = new Array();
-  for (var i = 0; i < navLink.length; i++) {
+  const contentsArr = new Array();
+  for (let i = 0; i < navLink.length; i++) {
     // コンテンツのIDを取得
-    var targetContents = navLink.eq(i).attr("href");
+    const targetContents = navLink.eq(i).attr("href");
     // ページ内リンクでないナビゲーションが含まれている場合は除外する
     if (targetContents.charAt(0) == "#") {
       // ページ上部からコンテンツの開始位置までの距離を取得
-      var targetContentsTop = $(targetContents).offset().top;
+      const targetContentsTop = $(targetContents).offset().top;
       // ページ上部からコンテンツの終了位置までの距離を取得
-      var targetContentsBottom =
+      const targetContentsBottom =
         targetContentsTop + $(targetContents).outerHeight(true) - 1;
       // 配列に格納
       contentsArr[i] = [targetContentsTop, targetContentsBottom];
@@ -22,8 +22,8 @@ $(function () {
   // 現在地をチェックする
   function currentCheck() {
     // 現在のスクロール位置を取得
-    var windowScrolltop = $(window).scrollTop();
-    for (var i = 0; i < contentsArr.length; i++) {
+    const windowScrolltop = $(window).scrollTop();
+    for (let i = 0; i < contentsArr.length; i++) {
       // 現在のスクロール位置が、配列に格納した開始位置と終了位置の間にあるものを調べる
       if (
         contentsArr[i][0] <= windowScrolltop &&
@@ -58,14 +58,14 @@ $(function () {
 function ScrollTimelineAnime() {
   $(".timeline li").each(function () {
     // それぞれのli要素の
-    var elemPos = $(this).offset().top; // 上からの高さ取得
-    var scroll = $(window).scrollTop(); // スクロール値取得
-    var windowHeight = $(window).height(); // windowの高さ取得
-    var startPoint = 100; //線をスタートさせる位置を指定※レイアウトによって調整してください
+    const elemPos = $(this).offset().top; // 上からの高さ取得
+    const scroll = $(window).scrollTop(); // スクロール値取得
+    const windowHeight = $(window).height(); // windowの高さ取得
+    const startPoint = 100; //線をスタートさせる位置を指定※レイアウトによって調整してください
     if (scroll >= elemPos - windowHeight - startPoint) {
-      var H = $(this).outerHeight(true); //liの余白と高さを含めた数値を取得
+      const H = $(this).outerHeight(true); //liの余白と高さを含めた数値を取得
       //スクロール値から要素までの高さを引いた値を、liの高さの半分のパーセントで出す
-      var percent = ((scroll + startPoint - elemPos) / (H / 2)) * 100; //liの余白と高さの半分で線を100％に伸ばす
+      let percent = ((scroll + startPoint - elemPos) / (H / 2)) * 100; //liの余白と高さの半分で線を100％に伸ばす
 
       // 100% を超えたらずっと100%を入れ続ける
       if (percent > 100) {
