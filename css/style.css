@@ -267,25 +267,9 @@ a .fa-github {
 
 /*========= スポンサーのためのCSS ===============*/
 
-.image-sponsor {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px 2%;
+.sponsor-image {
+    padding: 5%;
 }
-
-
-
-.image-sponsor li {
-    width: 32%;
-    list-style-type: none;
-    padding: 1%;
-}
-
-.image-sponsor li a {
-    display: block;
-    position: relative;
-}
-
 
 /*========= レイアウトのためのCSS ===============*/
 
