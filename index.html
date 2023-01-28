@@ -2,26 +2,50 @@
 <html lang="ja">
 
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5R8P23N');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ここにCSSフレームワークの参照を追加 -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- ここにCSS追加記述 -->
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <title>鹿児島Ruby会議02</title>
+    <script defer src="javascript/index.js"></script>
 </head>
 
 <body>
-
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5R8P23N" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div id="wrapper">
         <div id="fixed-area"><!--左固定エリア-->
             <div id="header">
                 <h1><a href="#"><img src="img/logo.png" alt="鹿児島Ruby会議02"></a></h1>
 
                 <ul id="nav">
-                    <li><a href="#about">鹿児島Ruby会議02について</a></li>
-                    <li><a href="#contents02">招待講演</a></li>
-                    <li><a href="#schedule">タイムスケジュール</a></li>
-                    <li><a href="#conduct">行動規範</a></li>
+                    <li><a href="#about" class="nav-link">鹿児島Ruby会議02について</a></li>
+                    <li><a href="#contents02" class="nav-link">招待講演</a></li>
+                    <li><a href="#schedule" class="nav-link">タイムスケジュール</a></li>
+                    <li><a href="#conduct" class="nav-link">行動規範</a></li>
+                    <span class="sub-menu">
+                        <li><a href="#organizer" class="nav-link">主催</a></li>
+                        <li><a href="#patronage" class="nav-link">後援</a></li>
+                        <li><a href="#sponsor" class="nav-link">スポンサー</a></li>
+                    </span>
                 </ul>
             </div>
             <!--/fixed-area-->
@@ -31,7 +55,7 @@
             <div id="content">
                 <div class="main">
                     <img src="img/mainvisual.png" alt="鹿児島Ruby会議02">
-                    <p>会場：mark MEIZAN　<a href="https://goo.gl/maps/bnho5QgtGzymfVGZ6" target="_blank">行き方</a></p>
+                    <p>会場：mark MEIZAN　<a href="https://goo.gl/maps/bnho5QgtGzymfVGZ6" target="_blank" rel="noopener noreferrer">行き方</a></p>
                     <a href="https://k-ruby.connpass.com/event/272282/" class="btn btn--orange btn--radius">無料参加申込</a>
                     <span style="font-size: .6em;">先着順：60名　参加費：無料</span>
                 </div>
@@ -44,29 +68,79 @@
                 </div>
                 <div id="contents02" class="content_style">
                     <h2 id="contents02">招待講演</h2>
+                        <div class="card lg:card-side shadow-md">
+                            <figure><img src="https://placehold.jp/150x150.png" alt="Album" /></figure>
+                            <div class="card-body">
+                                <h3 class="card-title">公演のタイトルがきます。</h3>
+                                <p>
+                                    登壇者の名前がきます<br>
+                                </p>
+                                <div class="card-actions justify-end card-sns">
+                                    <div>
+                                        <a href="" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                                        <i class="fa-brands fa-twitter fa-lg"></i>
+                                        <i class="fa-brands fa-github fa-lg"></i>
+                                    </div>
+                                </div>
+                        
+                            </div>
+                        </div>
 
                 </div>
                 <div id="schedule" class="content_style">
                     <h2>タイムスケジュール</h2>
                     <ul class="timeline">
-                        <li>
+                        <!--１つ目-->
+                        <li class="timeline-item">
                             <dl>
                                 <dt>12:00〜13:00</dt>
-                                <dd><strong>開場、受付</strong>
+                                <dd>
+                                    <h3 class="card-title" style="line-height: 1.5;">開場、受付</h3>
                                 </dd>
                             </dl>
                             <span class="border-line"></span>
                         </li>
-                        <li>
+                        <!--２つ目-->
+                        <li class="timeline-item">
                             <dl>
                                 <dt>13:00〜13:15</dt>
-                                <dd><strong>opening</strong>
+                                <dd>
+                                    <h3 class="card-title" style="line-height: 1.5;">opening</h3>
+                                </dd>
+                            </dl>
+                            <span class="border-line"></span>
+                        </li>
+                        <!--３つ目-->
+                        <li class="timeline-item">
+                            <dl>
+                                <dt>13:15〜13:55</dt>
+                                <dd>
+                                    <div class="card lg:card-side shadow-md">
+                                        <figure><img src="https://placehold.jp/150x150.png" alt="Album" /></figure>
+                                        <div class="card-body">
+                                            <h3 class="card-title">公演のタイトルがきます。</h3>
+                                            <p>
+                                               登壇者の名前がきます<br>
+                                            </p>
+                                            <div class="card-actions justify-end card-sns">
+                                                    <div>
+                                                        <a href="" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                                                        <i class="fa-brands fa-twitter fa-lg"></i>
+                                                        <i class="fa-brands fa-github fa-lg"></i>
+                                                    </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </dd>
                             </dl>
                             <span class="border-line"></span>
                         </li>
 
                     </ul>
+
+
+                    
                 </div>
                 <div id="conduct" class="content_style">
                     <h2>行動規範</h2>
@@ -80,6 +154,21 @@
                         </li>
                         </p>
                 </div>
+                <div id="organizer" class="content_style">
+                    <h2>
+                        主催
+                    </h2>                
+                </div>
+                <div id="patronage" class="content_style">
+                    <h2>
+                        後援
+                    </h2>
+                </div>
+                <div id="sponsor" class="content_style">
+                    <h2>
+                        スポンサー
+                    </h2>
+                </div>
             </div>
             <footer><small><!--&copy;-->This work by 鹿児島Ruby会議02 Team is licensed under a Creative Commons Attribution
                     3.0 Unported License.</small></footer>
@@ -87,97 +176,6 @@
         </div>
         <!--/wrapper-->
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>
-        // JavaScript Document
-
-        $(function () {
-            // ナビゲーションのリンクを指定
-            var navLink = $('#nav li a');
-
-            // 各コンテンツのページ上部からの開始位置と終了位置を配列に格納しておく
-            var contentsArr = new Array();
-            for (var i = 0; i < navLink.length; i++) {
-                // コンテンツのIDを取得
-                var targetContents = navLink.eq(i).attr('href');
-                // ページ内リンクでないナビゲーションが含まれている場合は除外する
-                if (targetContents.charAt(0) == '#') {
-                    // ページ上部からコンテンツの開始位置までの距離を取得
-                    var targetContentsTop = $(targetContents).offset().top;
-                    // ページ上部からコンテンツの終了位置までの距離を取得
-                    var targetContentsBottom = targetContentsTop + $(targetContents).outerHeight(true) - 1;
-                    // 配列に格納
-                    contentsArr[i] = [targetContentsTop, targetContentsBottom]
-                }
-            };
-
-            // 現在地をチェックする
-            function currentCheck() {
-                // 現在のスクロール位置を取得
-                var windowScrolltop = $(window).scrollTop();
-                for (var i = 0; i < contentsArr.length; i++) {
-                    // 現在のスクロール位置が、配列に格納した開始位置と終了位置の間にあるものを調べる
-                    if (contentsArr[i][0] <= windowScrolltop && contentsArr[i][1] >= windowScrolltop) {
-                        // 開始位置と終了位置の間にある場合、ナビゲーションにclass="current"をつける
-                        navLink.removeClass('current');
-                        navLink.eq(i).addClass('current');
-                        i == contentsArr.length;
-                    }
-                };
-            }
-
-            // ページ読み込み時とスクロール時に、現在地をチェックする
-            $(window).on('load scroll', function () {
-                currentCheck();
-            });
-
-            // ナビゲーションをクリックした時のスムーズスクロール
-            navLink.click(function () {
-                $('html,body').animate({
-                    scrollTop: $($(this).attr('href')).offset().top
-                }, 300);
-                return false;
-            })
-        });
-
-
-        //線が伸びるための設定を関数でまとめる
-        function ScrollTimelineAnime() {
-            $('.timeline li').each(function () {// それぞれのli要素の
-                var elemPos = $(this).offset().top;// 上からの高さ取得
-                var scroll = $(window).scrollTop();// スクロール値取得
-                var windowHeight = $(window).height();// windowの高さ取得
-                var startPoint = 100; //線をスタートさせる位置を指定※レイアウトによって調整してください
-                if (scroll >= elemPos - windowHeight - startPoint) {
-                    var H = $(this).outerHeight(true)//liの余白と高さを含めた数値を取得
-                    //スクロール値から要素までの高さを引いた値を、liの高さの半分のパーセントで出す
-                    var percent = (scroll + startPoint - elemPos) / (H / 2) * 100;//liの余白と高さの半分で線を100％に伸ばす
-
-                    // 100% を超えたらずっと100%を入れ続ける
-                    if (percent > 100) {
-                        percent = 100;
-                    }
-                    // ボーダーの長さをセット
-                    $(this).children('.border-line').css({
-                        height: percent + "%", //CSSでパーセント指定
-                    });
-                }
-            });
-        }
-
-        // 画面をスクロールをしたら動かしたい場合の記述
-        $(window).on('scroll', function () {
-            ScrollTimelineAnime();// 線が伸びる関数を呼ぶ
-        });
-
-        // ページが読み込まれたらすぐに動かしたい場合の記述
-        $(window).on('load', function () {
-            ScrollTimelineAnime();// 線が伸びる関数を呼ぶ
-        });
-
-
-    </script>
-
 </body>
 
 </html>
