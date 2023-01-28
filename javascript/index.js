@@ -1,28 +1,29 @@
-$(function () {
+(() => {
   // ナビゲーションのリンクを指定
-  const navLink = $("#nav li a");
+  const navLinks = document.querySelectorAll("#nav li a");
 
   // 各コンテンツのページ上部からの開始位置と終了位置を配列に格納しておく
   const contentsArr = new Array();
-  for (let i = 0; i < navLink.length; i++) {
+  for (let i = 0; i < navLinks.length; i++) {
     // コンテンツのIDを取得
-    const targetContents = navLink.eq(i).attr("href");
+    const anchorLink = navLinks[i].getAttribute("href");
     // ページ内リンクでないナビゲーションが含まれている場合は除外する
-    if (targetContents.charAt(0) == "#") {
-      // ページ上部からコンテンツの開始位置までの距離を取得
-      const targetContentsTop = $(targetContents).offset().top;
-      // ページ上部からコンテンツの終了位置までの距離を取得
-      const targetContentsBottom =
-        targetContentsTop + $(targetContents).outerHeight(true) - 1;
-      // 配列に格納
-      contentsArr[i] = [targetContentsTop, targetContentsBottom];
-    }
+    if (anchorLink.charAt(0) !== "#") return;
+
+    const targetElement = document.querySelector(anchorLink);
+    // ページ上部からコンテンツの開始位置までの距離を取得
+    const targetContentsTop = targetElement.offsetTop;
+    // ページ上部からコンテンツの終了位置までの距離を取得
+    const targetContentsBottom =
+      targetContentsTop + targetElement.offsetHeight - 1;
+    // 配列に格納
+    contentsArr[i] = [targetContentsTop, targetContentsBottom];
   }
 
   // 現在地をチェックする
-  function currentCheck() {
+  const currentCheck = () => {
     // 現在のスクロール位置を取得
-    const windowScrolltop = $(window).scrollTop();
+    const windowScrolltop = window.pageYOffset;
     for (let i = 0; i < contentsArr.length; i++) {
       // 現在のスクロール位置が、配列に格納した開始位置と終了位置の間にあるものを調べる
       if (
@@ -30,17 +31,16 @@ $(function () {
         contentsArr[i][1] >= windowScrolltop
       ) {
         // 開始位置と終了位置の間にある場合、ナビゲーションにclass="current"をつける
-        navLink.removeClass("current");
-        navLink.eq(i).addClass("current");
+        navLinks.forEach((navLink) => navLink.classList.remove("current"));
+        navLinks[i].classList.add("current");
         i == contentsArr.length;
       }
     }
-  }
+  };
 
   // ページ読み込み時とスクロール時に、現在地をチェックする
-  $(window).on("load scroll", function () {
-    currentCheck();
-  });
+  document.addEventListener("DOMContentLoaded", currentCheck); // 対象が画像ではないので load は使わない
+  document.addEventListener("scroll", currentCheck);
 
   // ナビゲーションをクリックした時のスムーズスクロール
   navLink.click(function () {
@@ -52,7 +52,7 @@ $(function () {
     );
     return false;
   });
-});
+})();
 
 //線が伸びるための設定を関数でまとめる
 function ScrollTimelineAnime() {
