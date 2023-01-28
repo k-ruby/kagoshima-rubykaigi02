@@ -264,6 +264,28 @@ a .fa-github {
    display: flex;
 }
 
+
+/*========= スポンサーのためのCSS ===============*/
+
+.image-sponsor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 2%;
+}
+
+
+
+.image-sponsor li {
+    width: 32%;
+    list-style-type: none;
+}
+
+.image-sponsor li a {
+    display: block;
+    position: relative;
+}
+
+
 /*========= レイアウトのためのCSS ===============*/
 
 hep,
