@@ -1,46 +1,46 @@
 (() => {
-  // ナビゲーションのリンクを指定
-  const navLinks = document.querySelectorAll("#nav li a");
+  // ナビゲーションのリンクを取得
+  const navigationLinks = document.querySelectorAll(".nav-link");
 
-  // 各コンテンツのページ上部からの開始位置と終了位置を配列に格納しておく
-  const contentsArr = new Array();
-  for (let i = 0; i < navLinks.length; i++) {
-    // コンテンツのIDを取得
-    const anchorLink = navLinks[i].getAttribute("href");
-    // ページ内リンクでないナビゲーションが含まれている場合は除外する
+  // 各コンテンツのページ上部からの開始位置・終了位置とナビゲーションのリンクを配列に格納しておく
+  const contents = []
+  navigationLinks.forEach((navigationLink) => {
+    // 対象コンテンツの id 属性を取得
+    const anchorLink = navigationLink.getAttribute("href");
+    // ページ内リンクでない場合は除外する
     if (anchorLink.charAt(0) !== "#") return;
 
-    const targetElement = document.querySelector(anchorLink);
+    // 対象コンテンツのDOMを取得
+    const targetContent = document.querySelector(anchorLink);
     // ページ上部からコンテンツの開始位置までの距離を取得
-    const targetContentsTop = targetElement.offsetTop;
+    const targetContentTop = targetContent.offsetTop;
     // ページ上部からコンテンツの終了位置までの距離を取得
-    const targetContentsBottom =
-      targetContentsTop + targetElement.offsetHeight - 1;
+    const targetContentBottom = targetContentTop + targetContent.offsetHeight;
     // 配列に格納
-    contentsArr[i] = [targetContentsTop, targetContentsBottom];
-  }
+    contents.push( {
+      top: targetContentTop,
+      bottom: targetContentBottom,
+      navigationLink,
+    });
+  });
 
-  // 現在地をチェックする
-  const currentCheck = () => {
+  // 現在のスクロール位置でナビゲーションのスタイリングを変更する
+  const refreshCurrentNavigation = () => {
     // 現在のスクロール位置を取得
-    const windowScrolltop = window.pageYOffset;
-    for (let i = 0; i < contentsArr.length; i++) {
-      // 現在のスクロール位置が、配列に格納した開始位置と終了位置の間にあるものを調べる
-      if (
-        contentsArr[i][0] <= windowScrolltop &&
-        contentsArr[i][1] >= windowScrolltop
-      ) {
-        // 開始位置と終了位置の間にある場合、ナビゲーションにclass="current"をつける
-        navLinks.forEach((navLink) => navLink.classList.remove("current"));
-        navLinks[i].classList.add("current");
-        i == contentsArr.length;
+    const windowScrollTop = window.pageYOffset;
+    contents.forEach((content) => {
+      // 現在のスクロール位置が、コンテンツの開始位置と終了位置の間にあるか
+      if (content.top <= windowScrollTop && windowScrollTop <= content.bottom) {
+        // 開始位置と終了位置の間にあるコンテンツのナビゲーションリンクに class="current" を設定する
+        navigationLinks.forEach((navLink) => navLink.classList.remove("current"));
+        content.navigationLink.classList.add("current");
       }
-    }
+    });
   };
 
   // ページ読み込み時とスクロール時に、現在地をチェックする
-  document.addEventListener("DOMContentLoaded", currentCheck); // 対象が画像ではないので load は使わない
-  document.addEventListener("scroll", currentCheck);
+  document.addEventListener("DOMContentLoaded", refreshCurrentNavigation); // 対象が画像ではないので load は使わない
+  document.addEventListener("scroll", refreshCurrentNavigation);
 })();
 
 //線が伸びるための設定を関数でまとめる
