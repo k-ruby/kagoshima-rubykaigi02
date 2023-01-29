@@ -2,9 +2,24 @@
 <html lang="ja">
 
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5R8P23N');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ここにCSSフレームワークの参照を追加 -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- ここにCSS追加記述 -->
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <title>鹿児島Ruby会議02</title>
@@ -12,7 +27,10 @@
 </head>
 
 <body>
-
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5R8P23N" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div id="wrapper">
         <div id="fixed-area"><!--左固定エリア-->
             <div id="header">
@@ -23,6 +41,11 @@
                     <li><a href="#contents02" class="nav-link">招待講演</a></li>
                     <li><a href="#schedule" class="nav-link">タイムスケジュール</a></li>
                     <li><a href="#conduct" class="nav-link">行動規範</a></li>
+                    <span class="sub-menu">
+                        <li><a href="#organizer" class="nav-link">主催</a></li>
+                        <li><a href="#patronage" class="nav-link">後援</a></li>
+                        <li><a href="#sponsor" class="nav-link">スポンサー</a></li>
+                    </span>
                 </ul>
             </div>
             <!--/fixed-area-->
@@ -32,7 +55,7 @@
             <div id="content">
                 <div class="main">
                     <img src="img/mainvisual.png" alt="鹿児島Ruby会議02">
-                    <p>会場：mark MEIZAN　<a href="https://goo.gl/maps/bnho5QgtGzymfVGZ6" target="_blank">行き方</a></p>
+                    <p>会場：mark MEIZAN　<a href="https://goo.gl/maps/bnho5QgtGzymfVGZ6" target="_blank" rel="noopener noreferrer">行き方</a></p>
                     <a href="https://k-ruby.connpass.com/event/272282/" class="btn btn--orange btn--radius">無料参加申込</a>
                     <span style="font-size: .6em;">先着順：60名　参加費：無料</span>
                 </div>
@@ -45,29 +68,79 @@
                 </div>
                 <div id="contents02" class="content_style">
                     <h2 id="contents02">招待講演</h2>
+                        <div class="card lg:card-side shadow-md">
+                            <figure><img src="https://placehold.jp/150x150.png" alt="Album" /></figure>
+                            <div class="card-body">
+                                <h3 class="card-title">公演のタイトルがきます。</h3>
+                                <p>
+                                    登壇者の名前がきます<br>
+                                </p>
+                                <div class="card-actions justify-end card-sns">
+                                    <div>
+                                        <a href="" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                                        <i class="fa-brands fa-twitter fa-lg"></i>
+                                        <i class="fa-brands fa-github fa-lg"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
 
                 </div>
                 <div id="schedule" class="content_style">
                     <h2>タイムスケジュール</h2>
                     <ul class="timeline">
+                        <!--１つ目-->
                         <li class="timeline-item">
                             <dl>
                                 <dt>12:00〜13:00</dt>
-                                <dd><strong>開場、受付</strong>
+                                <dd>
+                                    <h3 class="card-title" style="line-height: 1.5;">開場、受付</h3>
                                 </dd>
                             </dl>
                             <span class="border-line"></span>
                         </li>
+                        <!--２つ目-->
                         <li class="timeline-item">
                             <dl>
                                 <dt>13:00〜13:15</dt>
-                                <dd><strong>opening</strong>
+                                <dd>
+                                    <h3 class="card-title" style="line-height: 1.5;">opening</h3>
+                                </dd>
+                            </dl>
+                            <span class="border-line"></span>
+                        </li>
+                        <!--３つ目-->
+                        <li class="timeline-item">
+                            <dl>
+                                <dt>13:15〜13:55</dt>
+                                <dd>
+                                    <div class="card lg:card-side shadow-md">
+                                        <figure><img src="https://placehold.jp/150x150.png" alt="Album" /></figure>
+                                        <div class="card-body">
+                                            <h3 class="card-title">公演のタイトルがきます。</h3>
+                                            <p>
+                                               登壇者の名前がきます<br>
+                                            </p>
+                                            <div class="card-actions justify-end card-sns">
+                                                    <div>
+                                                        <a href="" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                                                        <i class="fa-brands fa-twitter fa-lg"></i>
+                                                        <i class="fa-brands fa-github fa-lg"></i>
+                                                    </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </dd>
                             </dl>
                             <span class="border-line"></span>
                         </li>
 
                     </ul>
+
+
+
                 </div>
                 <div id="conduct" class="content_style">
                     <h2>行動規範</h2>
@@ -80,6 +153,34 @@
                         <li>これらのルールを破った会議参加者は，主催者の判断によって，会議内での行動を制限されたり，参加費の返却なく会議からの追放処分を受けることがあります．不適切な行為を受けている，または受けている人を見かけた場合はただちにスタッフにお知らせ下さい．
                         </li>
                         </p>
+                </div>
+                <div id="organizer" class="content_style">
+                    <h2>
+                        主催
+                    </h2>
+                </div>
+                <div id="patronage" class="content_style">
+                    <h2>
+                        後援
+                    </h2>
+                </div>
+                <div id="sponsor" class="content_style">
+                    <h2>
+                        スポンサー
+                    </h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="shadow-md sponsor-image"><a href="" target="_blank" rel="noopener noreferrer"><img src="https://placehold.jp/800x450.png" alt=""></a>
+                        </div>
+                        <div class="shadow-md sponsor-image"><a href="" target="_blank" rel="noopener noreferrer"><img src="https://placehold.jp/800x450.png" alt=""></a>
+                        </div>
+                        <div class="shadow-md sponsor-image"><a href="" target="_blank" rel="noopener noreferrer"><img src="https://placehold.jp/800x450.png" alt=""></a>
+                        </div>
+                        <div class="shadow-md sponsor-image"><a href="" target="_blank" rel="noopener noreferrer"><img src="https://placehold.jp/800x450.png" alt=""></a>
+                        </div>
+                        <div class="shadow-md sponsor-image"><a href="" target="_blank" rel="noopener noreferrer"><img src="https://placehold.jp/800x450.png" alt=""></a>
+                        </div>
+
+                    </div>
                 </div>
             </div>
             <footer><small><!--&copy;-->This work by 鹿児島Ruby会議02 Team is licensed under a Creative Commons Attribution
