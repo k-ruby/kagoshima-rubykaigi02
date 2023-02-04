@@ -192,6 +192,12 @@ a.btn--radius {
     margin-bottom: .5em;
 }
 
+.caption {
+    opacity: 0.8;
+    font-size: 0.8em;
+    margin-bottom: 1em;
+}
+
 /*========= バー表示のためのCSS ===============*/
 
 /*タイムライン全体の設定*/
