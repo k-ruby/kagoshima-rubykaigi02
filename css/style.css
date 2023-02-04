@@ -182,6 +182,10 @@ a.btn--radius {
     padding-bottom: 2%;
 }
 
+.content_style .link {
+    text-decoration: underline;
+}
+
 /*========= バー表示のためのCSS ===============*/
 
 /*タイムライン全体の設定*/
