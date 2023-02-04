@@ -186,6 +186,12 @@ a.btn--radius {
     text-decoration: underline;
 }
 
+.emphasized_content {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: .5em;
+}
+
 /*========= バー表示のためのCSS ===============*/
 
 /*タイムライン全体の設定*/
