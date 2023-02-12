@@ -30,4 +30,7 @@
     "lang": "ja"
   },
   "html.format.enable": true,
+  "[javascript]": {
+    "editor.tabSize": 2,
+  }
 }
