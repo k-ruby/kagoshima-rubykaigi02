@@ -47,30 +47,30 @@ const timelineScrollAnimation = () => {
   const animationStartingTop = 100;
   // アニメーションの速度。アニメーションを早くしたいなら高い数字を入れてください
   const animationVelocity = 2;
-
   // スクロール値を取得
   const windowScrollTop = window.pageYOffset;
-  // ブラウザウィンドウの内部の高さを取得
-  const windowHeight = window.innerHeight;
 
   document.querySelectorAll(".timeline-item").forEach((timelineItem) => {
     // それぞれのタイムスケジュール要素の
     const itemTop = timelineItem.offsetTop; // 上からの高さ取得
-    const startTop = itemTop - windowHeight - animationStartingTop;
-    if (windowScrollTop >= startTop) {
-      const itemHeight = timelineItem.offsetHeight; //liの余白と高さを含めた数値を取得
+    const itemHeight = timelineItem.offsetHeight; //liの余白と高さを含めた数値を取得
+    const itemBottom = itemTop + itemHeight;
+    const startTop = itemTop - animationStartingTop;
+    if (startTop <= windowScrollTop && windowScrollTop < itemBottom) {
       // タイムスケジュール要素内でスクロールした高さを計算
-      const scrollTopInnerItem =
-        windowScrollTop + animationStartingTop - itemTop;
+      const scrollTopInnerItem = windowScrollTop - startTop;
       //スクロール値から要素までの高さを引いた値を、liの高さの半分のパーセントで出す
-      let percent =
-        (scrollTopInnerItem / (itemHeight / animationVelocity)) * 100; //liの余白と高さの半分で線を100％に伸ばす
+      //liの余白と高さの半分で線を100％に伸ばす
+      let percent = (scrollTopInnerItem / itemHeight) * animationVelocity * 100;
       // 100% を超えたらずっと100%を入れ続ける
-      if (percent > 100) {
-        percent = 100;
+      if (percent < 100) {
+        timelineItem.querySelector(".border-line").style.height = `${percent}%`;
+      } else {
+        timelineItem.querySelector(".border-line").style.height = `100%`;
       }
       // ボーダーの長さをパーセント指定でセット
-      timelineItem.querySelector(".border-line").style.height = `${percent}%`;
+    } else {
+      timelineItem.querySelector(".border-line").style.height = `0%`;
     }
   });
 };
