@@ -17,7 +17,7 @@ navigationLinks.forEach((navigationLink) => {
   const targetContentBottom = targetContentTop + targetContent.offsetHeight;
   // 配列に格納
   contents.push({
-    top: targetContentTop,
+    top: targetContentTop - 10,
     bottom: targetContentBottom,
     navigationLink,
   });
