@@ -1,44 +1,47 @@
-// ナビゲーションのリンクを取得
-const navigationLinks = document.querySelectorAll(".nav-link");
-
 // 各コンテンツのページ上部からの開始位置・終了位置とナビゲーションのリンクを配列に格納しておく
 const contents = [];
+// ナビゲーションのリンクを取得
+const navigationLinks = document.querySelectorAll(".nav-link");
 navigationLinks.forEach((navigationLink) => {
   // 対象コンテンツの id 属性を取得
   const anchorLink = navigationLink.getAttribute("href");
   // ページ内リンクでない場合は除外する
   if (anchorLink.charAt(0) !== "#") return;
 
-  // 対象コンテンツのDOMを取得
-  const targetContent = document.querySelector(anchorLink);
-  // ページ上部からコンテンツの開始位置までの距離を取得
-  const targetContentTop = targetContent.offsetTop;
-  // ページ上部からコンテンツの終了位置までの距離を取得
-  const targetContentBottom = targetContentTop + targetContent.offsetHeight;
   // 配列に格納
   contents.push({
-    top: targetContentTop - 10,
-    bottom: targetContentBottom,
+    targetContent: document.querySelector(anchorLink),
     navigationLink,
   });
 });
 
-// 現在のスクロール位置でナビゲーションのスタイリングを変更する
-const refreshCurrentNavigation = () => {
+const isScrolledDownToContent = (targetContent) => {
   // 現在のスクロール位置を取得
   const windowScrollTop = window.pageYOffset;
+  // ページ上部からコンテンツの開始位置までの距離を取得
+  const targetContentTop = targetContent.offsetTop - 10;
+  // ページ上部からコンテンツの終了位置までの距離を取得
+  const targetContentBottom = targetContentTop + targetContent.offsetHeight;
+  return (
+    targetContentTop <= windowScrollTop &&
+    windowScrollTop <= targetContentBottom
+  );
+};
+
+// 現在のスクロール位置でナビゲーションのスタイリングを変更する
+const refreshCurrentNavigation = () => {
+  navigationLinks.forEach((navLink) => navLink.classList.remove("current"));
   contents.forEach((content) => {
     // 現在のスクロール位置が、コンテンツの開始位置と終了位置の間にあるか
-    if (content.top <= windowScrollTop && windowScrollTop <= content.bottom) {
+    if (isScrolledDownToContent(content.targetContent)) {
       // 開始位置と終了位置の間にあるコンテンツのナビゲーションリンクに class="current" を設定する
-      navigationLinks.forEach((navLink) => navLink.classList.remove("current"));
       content.navigationLink.classList.add("current");
     }
   });
 };
 
 // ページ読み込み時とスクロール時に、ナビゲーションのスタイリングを変更する
-window.addEventListener("load", refreshCurrentNavigation); // 対象が画像ではないので load は使わない
+document.addEventListener("DOMContentLoaded", refreshCurrentNavigation); // 対象が画像ではないので load は使わない
 document.addEventListener("scroll", refreshCurrentNavigation);
 
 // タイムスケジュールの線がスクロールに応じて伸びるアニメーション
