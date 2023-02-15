@@ -38,7 +38,7 @@ const refreshCurrentNavigation = () => {
 };
 
 // ページ読み込み時とスクロール時に、ナビゲーションのスタイリングを変更する
-document.addEventListener("DOMContentLoaded", refreshCurrentNavigation); // 対象が画像ではないので load は使わない
+window.addEventListener("load", refreshCurrentNavigation); // 対象が画像ではないので load は使わない
 document.addEventListener("scroll", refreshCurrentNavigation);
 
 // タイムスケジュールの線がスクロールに応じて伸びるアニメーション
